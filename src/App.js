@@ -10,10 +10,12 @@ function App() {
           <h1>COVID-19 TRACKER</h1>
           <FormControl className="app__dropdown">
             <Select variant="outlined" value="abc">
-              <MenuItem value="worldwide">WorldWide</MenuItem>
+              {/* loop through all countries available and show a drop down list of options */}
+
+              {/* <MenuItem value="worldwide">WorldWide</MenuItem>
               <MenuItem value="worldwide">Option Two</MenuItem>
               <MenuItem value="worldwide">Option 3</MenuItem>
-              <MenuItem value="worldwide">Yoooo</MenuItem>
+              <MenuItem value="worldwide">Yoooo</MenuItem> */}
             </Select>
           </FormControl>
         </div>
