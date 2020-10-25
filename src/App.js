@@ -4,12 +4,9 @@ import "./App.css";
 
 function App() {
   const [countries, setCountries] = useState([]);
-  // State = How to Write a variable in REACT
-  // get a list of countries from disease.sh ==> https://disease.sh/v3/covid-19/countries
+  const [country, setInputCountry] = useState("worldwide");
 
   useEffect(() => {
-    // async => send a request, wait for it, do something with it
-
     const getCountriesData = async () => {
       await fetch("https://disease.sh/v3/covid-19/countries")
         .then(response => response.json())
@@ -24,35 +21,35 @@ function App() {
 
     getCountriesData();
   }, []);
-  // useEffect = runs a piece of code based on a given condition
+
+  const onCountryChange = async event => {
+    const countryCode = event.target.value;
+    setInputCountry(countryCode);
+  };
 
   return (
-    <>
-      <div className="app">
-        <div className="app__header">
-          <h1>COVID-19 TRACKER</h1>
-          <FormControl className="app__dropdown">
-            <Select variant="outlined" value="abc">
-              {/* loop through all countries available and show a drop down list of options */}
-              {countries.map(country => (
-                <MenuItem value={country.value}> {country.name}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </div>
-
-        {/* {Header} */}
-        {/* Title + select input dropdown field */}
-        {/* {info box} */}
-        {/* {info box} */}
-        {/* {info box} */}
-
-        {/* Table on the side bar */}
-        {/* Grapj below the table */}
-
-        {/* {map at the bottom} */}
+    <div className="app">
+      <div className="app__header">
+        <h1>COVID-19 TRACKER</h1>
+        <FormControl className="app__dropdown">
+          <Select variant="outlined" value={country} onChange={onCountryChange}>
+            <MenuItem value="worldwide">Worldwide</MenuItem>
+            {countries.map(country => (
+              <MenuItem value={country.value}> {country.name} </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
       </div>
-    </>
+
+      {/* {info box} */}
+      {/* {info box} */}
+      {/* {info box} */}
+
+      {/* Table on the side bar */}
+      {/* Grapj below the table */}
+
+      {/* {map at the bottom} */}
+    </div>
   );
 }
 
