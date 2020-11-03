@@ -41,9 +41,11 @@ function App() {
         </FormControl>
       </div>
 
-      {/* {info box} */}
-      {/* {info box} */}
-      {/* {info box} */}
+      <div className="app__stats">
+        {/* {info box title = "coronavirus cases"} */}
+        {/* {info box title = "coronavirus recoveries"} */}
+        {/* {info box } */}
+      </div>
 
       {/* Table on the side bar */}
       {/* Grapj below the table */}
