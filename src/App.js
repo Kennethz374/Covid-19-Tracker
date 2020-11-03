@@ -48,7 +48,7 @@ function App() {
       {/* Table on the side bar */}
       {/* Grapj below the table */}
 
-      {/* {map at the bottom} */}
+      {/* {map at the bottom} .....*/}
     </div>
   );
 }
