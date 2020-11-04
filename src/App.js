@@ -11,9 +11,9 @@ import Map from "./Map";
 import "./App.css";
 
 function App() {
-  const [countries, setCountries] = useState([]);
-  const [country, setInputCountry] = useState("worldwide");
-  const [countryInfo, setCountryInfo] = useState({});
+  const [countries, setCountries] = useState([]); //loading list of countries for dropdown manual
+  const [country, setInputCountry] = useState("worldwide"); //for drop down manual
+  const [countryInfo, setCountryInfo] = useState({}); //for info boxes
 
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
