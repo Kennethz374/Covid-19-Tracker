@@ -37,7 +37,6 @@ const options = {
           display: false
         },
         ticks: {
-          // Include a dollar sign in the ticks
           callback: function(value, index, values) {
             return numeral(value).format("0a");
           }
@@ -47,7 +46,7 @@ const options = {
   }
 };
 
-const buildChartData = (data, casesType = "cases") => {
+const buildChartData = (data, casesType) => {
   const chartData = [];
   let lastDataPoint;
 
@@ -64,32 +63,37 @@ const buildChartData = (data, casesType = "cases") => {
   return chartData;
 };
 
-function LineGraph() {
+function LineGraph({ casesType = "cases" }) {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    fetch("https://disease.sh/v3/covid-19/historical/all?lastdays=120")
-      .then(response => response.json())
-      .then(data => {
-        const chartData = buildChartData(data);
-        setData(chartData);
-      });
-  }, []);
+    const fetchData = async () => {
+      await fetch("https://disease.sh/v3/covid-19/historical/all?lastdays=120")
+        .then(response => response.json())
+        .then(data => {
+          let chartData = buildChartData(data, casesType);
+          setData(chartData);
+        });
+    };
+    fetchData();
+  }, [casesType]);
 
   return (
     <div>
-      <Line
-        data={{
-          datasets: [
-            {
-              backgroundColor: "rgba(204, 16, 52, 0.5)",
-              borderColor: "#CC1034",
-              data: data
-            }
-          ]
-        }}
-        option={options}
-      />
+      {data && data.length > 0 && (
+        <Line
+          data={{
+            datasets: [
+              {
+                backgroundColor: "rgba(204, 16, 52, 0.5)",
+                borderColor: "#CC1034",
+                data: data
+              }
+            ]
+          }}
+          options={options}
+        />
+      )}
     </div>
   );
 }

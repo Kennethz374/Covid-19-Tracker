@@ -114,7 +114,6 @@ function App() {
           <h3>Worldwide New Cases</h3>
           <LineGraph />
         </CardContent>
-        this is the right side bar
       </Card>
     </div>
   );
