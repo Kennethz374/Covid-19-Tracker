@@ -62,8 +62,6 @@ function App() {
         setCountryInfo(data);
       });
   };
-  console.log(countryInfo);
-  console.log(tableData);
 
   return (
     <div className="app">
