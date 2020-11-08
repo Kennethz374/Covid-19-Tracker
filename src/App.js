@@ -8,12 +8,15 @@ import {
 } from "@material-ui/core";
 import InfoBox from "./InfoBox";
 import Map from "./Map";
+import Table from "./Table";
 import "./App.css";
+import { sortData } from "./helper";
 
 function App() {
   const [countries, setCountries] = useState([]); //loading list of countries for dropdown manual
   const [country, setInputCountry] = useState("worldwide"); //for drop down manual
   const [countryInfo, setCountryInfo] = useState({}); //for info boxes
+  const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
@@ -33,6 +36,9 @@ function App() {
             name: country.country, //UNITED STATE, UNITED KINGDOM
             value: country.countryInfo.iso2 // UK, USA, FR
           }));
+
+          const sortedData = sortData(data);
+          setTableData(sortedData);
           setCountries(countries);
         });
     };
@@ -56,6 +62,7 @@ function App() {
       });
   };
   console.log(countryInfo);
+  console.log(tableData);
 
   return (
     <div className="app">
@@ -104,7 +111,7 @@ function App() {
       <Card className="app__right">
         <CardContent>
           <h3>Live Cases by Country</h3>
-          {/* table */}
+          <Table countries={tableData} />
           <h3>Worldwide New Cases</h3>
           {/* graph */}
         </CardContent>
