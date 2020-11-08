@@ -6,10 +6,11 @@ import {
   Card,
   CardContent
 } from "@material-ui/core";
+import "./App.css";
 import InfoBox from "./InfoBox";
 import Map from "./Map";
 import Table from "./Table";
-import "./App.css";
+import LineGraph from "./LineGraph";
 import { sortData } from "./helper";
 
 function App() {
@@ -113,7 +114,7 @@ function App() {
           <h3>Live Cases by Country</h3>
           <Table countries={tableData} />
           <h3>Worldwide New Cases</h3>
-          {/* graph */}
+          <LineGraph />
         </CardContent>
         this is the right side bar
       </Card>
