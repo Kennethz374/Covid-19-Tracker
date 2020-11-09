@@ -12,7 +12,7 @@ import InfoBox from "./InfoBox";
 import Map from "./Map";
 import Table from "./Table";
 import LineGraph from "./LineGraph";
-import { sortData } from "./helper";
+import { sortData, prettyPrintStat } from "./helper";
 import "leaflet/dist/leaflet.css";
 
 function App() {
@@ -98,18 +98,18 @@ function App() {
         <div className="app__stats">
           <InfoBox
             title="Coronavirus"
-            cases={countryInfo.todayCases}
-            total={countryInfo.cases}
+            cases={prettyPrintStat(countryInfo.todayCases)}
+            total={prettyPrintStat(countryInfo.cases)}
           />
           <InfoBox
             title="Recovered"
-            cases={countryInfo.todayRecovered}
-            total={countryInfo.recovered}
+            cases={prettyPrintStat(countryInfo.todayRecovered)}
+            total={prettyPrintStat(countryInfo.recovered)}
           />
           <InfoBox
             title="Deaths"
-            cases={countryInfo.todayDeaths}
-            total={countryInfo.deaths}
+            cases={prettyPrintStat(countryInfo.todayDeaths)}
+            total={prettyPrintStat(countryInfo.deaths)}
           />
         </div>
 
