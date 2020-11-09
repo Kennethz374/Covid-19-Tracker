@@ -8,10 +8,11 @@ import {
 } from "@material-ui/core";
 import "./App.css";
 import InfoBox from "./InfoBox";
-import Map from "./Map";
+import MapContainer from "./Map";
 import Table from "./Table";
 import LineGraph from "./LineGraph";
 import { sortData } from "./helper";
+import "leaflet/dist/leaflet.css";
 
 function App() {
   const [countries, setCountries] = useState([]); //loading list of countries for dropdown manual
@@ -104,7 +105,7 @@ function App() {
           />
         </div>
 
-        <Map />
+        <MapContainer />
       </div>
 
       <Card className="app__right">
