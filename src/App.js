@@ -8,7 +8,7 @@ import {
 } from "@material-ui/core";
 import "./App.css";
 import InfoBox from "./InfoBox";
-import MapContainer from "./Map";
+import Map from "./Map";
 import Table from "./Table";
 import LineGraph from "./LineGraph";
 import { sortData } from "./helper";
@@ -105,7 +105,7 @@ function App() {
           />
         </div>
 
-        <MapContainer />
+        <Map />
       </div>
 
       <Card className="app__right">
