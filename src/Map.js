@@ -10,7 +10,6 @@ function ChangeMap({ center, zoom }) {
 }
 
 function Map({ countries, casesType, center, zoom }) {
-  console.log(center, zoom);
   return (
     <div className="map">
       <LeafletMap>
